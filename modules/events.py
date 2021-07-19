@@ -1,6 +1,5 @@
 import discord
 from discord.ext import commands
-import asyncio
 import os
 
 class Events(commands.Cog):
@@ -14,9 +13,13 @@ class Events(commands.Cog):
 
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload: discord.raw_models.RawReactionActionEvent):
-        if payload.message_id == int(os.getenv("ruleAcceptMessage")) and payload.emoji.name == "✅":
-            await payload.member.add_roles(self.bot.get_guild(payload.guild_id).get_role(int(os.getenv("ruleAcceptRole"))))
+        role = self.bot.get_guild(payload.guild_id).get_role(int(os.getenv("ruleAcceptRole")))
+        if payload.message_id == int(os.getenv("ruleAcceptMessage")) and role not in payload.member.roles and payload.emoji.name == "✅":
+            await payload.member.add_roles(role)
 
+    @commands.Cog.listener()
+    async def on_member_join(self, member: discord.Member):
+        member.send(f"Welcome to WWR {member.mention}! Make sure you agree to the rules by reacting with a ✅ once you agree with the rules in <#{int(os.getenv('ruleAcceptChannel'))}>")
 
 def setup(bot):
     bot.add_cog(Events(bot))
