@@ -13,7 +13,7 @@ logger.info("Starting WWR Bot")
 # Attempt to load a .env file, if none exists, use the default settings
 try:
     load_dotenv()
-except:
+except BaseException:
     logger.warning(".env file could not be loaded, using default settings")
 
 # Obtain environment variables
