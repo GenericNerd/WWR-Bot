@@ -19,7 +19,7 @@ class Events(commands.Cog):
 
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member):
-        member.send(f"Welcome to WWR {member.mention}! Make sure you agree to the rules by reacting with a ✅ once you agree with the rules in <#{int(os.getenv('ruleAcceptChannel'))}>")
+        member.send(f"Welcome to WWR {member.mention}! Make sure you agree to the rules in <#{int(os.getenv('ruleAcceptChannel'))}> by reacting with a ✅")
 
 def setup(bot):
     bot.add_cog(Events(bot))
