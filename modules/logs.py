@@ -18,14 +18,14 @@ class Logs(commands.Cog):
             msg = discord.Embed(title="Message edit", description=f"{before.author.mention} - {before.channel.mention} - [Jump to message]({before.jump_url})", color=0xff9900)
             msg.add_field(name="Previous message", value=before.content)
             msg.add_field(name="Edited message", value=after.content)
-            await self.bot.get_channel(os.getenv("auditLogChannel")).send(embed=msg)
+            await self.bot.get_channel(int(os.getenv("auditLogChannel"))).send(embed=msg)
 
     @commands.Cog.listener()
     async def on_message_delete(self, message: discord.Message):
         if message.guild != None:
             msg = discord.Embed(title="Message deleted", description=f"{message.author.mention} - {message.channel.mention}", color=0xff0000)
             msg.add_field(name="Message content", value=message.content)
-            await self.bot.get_channel(os.getenv("auditLogChannel")).send(embed=msg)
+            await self.bot.get_channel(int(os.getenv("auditLogChannel"))).send(embed=msg)
 
 def setup(bot):
     bot.add_cog(Logs(bot))
