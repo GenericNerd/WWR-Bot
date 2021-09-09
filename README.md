@@ -1,2 +1,2 @@
 # WWR-Bot
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/8ddc3b99e6ec498fbb8b88a39123233f)](https://www.codacy.com/gh/GenericNerd/WWR-Bot/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=GenericNerd/WWR-Bot&amp;utm_campaign=Badge_Grade)
+[![CodeFactor](https://www.codefactor.io/repository/github/genericnerd/wwr-bot/badge)](https://www.codefactor.io/repository/github/genericnerd/wwr-bot)
