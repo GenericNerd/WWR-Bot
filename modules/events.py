@@ -21,5 +21,10 @@ class Events(commands.Cog):
     async def on_member_join(self, member: discord.Member):
         await member.send(f"Welcome to WWR {member.mention}! Make sure you agree to the rules in <#{int(os.getenv('ruleAcceptChannel'))}> by reacting with a ✅")
 
+    @commands.Cog.listener()
+    async def on_member_remove(self, member: discord.Member):
+        msg = discord.Embed(title="Member leave", description=f"{member.mention} has left the server!", color=0x9A0000)
+        await self.bot.get_channel(int(os.getenv("auditLogChannel"))).send(embed=msg)
+
 def setup(bot):
     bot.add_cog(Events(bot))
