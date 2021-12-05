@@ -23,7 +23,7 @@ environment = os.getenv("environment","development")
 prefix = os.getenv("botPrefix")
 
 # Set startup cogs that will be loaded when the bot starts
-startupCogs = ["events", "logs"]
+startupCogs = ["events", "logs", "tweets"]
 
 intents = Intents.default()
 intents.members = True
